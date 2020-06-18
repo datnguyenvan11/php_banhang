@@ -80,6 +80,8 @@ else{
                     </li>
                     <h3 class="menu-title">Các Khoá Học</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
+                        <a style="font-family: 'Roboto Condensed', sans-serif;" href="addbaihockhoahoc.php" aria-haspopup="true"
+                           aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Thêm Khoá Học</a>
                         <a style="font-family: 'Roboto Condensed', sans-serif;" href="khoahoclist.php"  aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop" ></i>Thống Kê Khoá Học</a>
                         <ul class="sub-menu children">
                             <?php

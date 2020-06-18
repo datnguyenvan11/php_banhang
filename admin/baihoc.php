@@ -33,7 +33,7 @@ else{
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 7]>        <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
@@ -81,6 +81,8 @@ else{
                     </li>
                     <h3 class="menu-title">Các Khoá Học</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
+                        <a style="font-family: 'Roboto Condensed', sans-serif;" href="addbaihockhoahoc.php" aria-haspopup="true"
+                           aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Thêm Khoá Học</a>
                         <a style="font-family: 'Roboto Condensed', sans-serif;" href="khoahoclist.php"  aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop" ></i>Thống Kê Khoá Học</a>
                         <ul class="sub-menu children">
                             <?php
@@ -94,8 +96,6 @@ else{
                             ?>
                         </ul>
                     </li>
-
-
                     <h3 class="menu-title">thông tin tài khoản</h3><!-- /.menu-title -->
 
                     <li class="menu-item-has-children dropdown">
@@ -226,7 +226,6 @@ else{
                             <?php
                                 while($row=mysqli_fetch_assoc($result))
                                 {
-
                             ?>
                             <tr>
                                 <td><?php echo $row['id'] ?></td>
@@ -237,8 +236,12 @@ else{
                                 <td><?php echo $row['hide'] ?></td>
                                 <td><?php echo date("d-m-Y",strtotime($row['ngaydang'])) ?></td>
                                 <td><a class="btn btn-success" href="EditBaihoc.php?id=<?php echo $row['id']?>&maKHoc=<?php echo $maKHoc?>">Sửa</a></td>
-                                <td><a class="btn btn-warning" href="deleteBaihoc.php?id=<?php echo $row['id']?>&maKHoc=<?php echo $maKHoc?>">Xoá</a></td>
-                            </tr>
+                                <td>
+                                    <button id="deletekhoahoc_<?php echo $row['id'] ?>"
+                                            class="btn btn-warning delete-khoahoc">Xoá
+                                    </button>
+                                </td>
+                                                         </tr>
                                 <?php
                                     }
                                 ?>
@@ -250,9 +253,7 @@ else{
 
         </div> <!-- .content -->
     </div><!-- /#right-panel -->
-
     <!-- Right Panel -->
-
     <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="assets/js/plugins.js"></script>
@@ -266,6 +267,24 @@ else{
     <script src="assets/js/lib/vector-map/jquery.vmap.min.js"></script>
     <script src="assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
     <script src="assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+            <script>
+                jQuery('.delete-khoahoc').click(function () {
+                    if (confirm('Bạn có chắc muốn xóa không?')) {
+                        var deleteId = jQuery(this).attr('id').replace('deletekhoahoc_', '');
+                        jQuery.ajax({
+                            url: '/bankhoahoc/admin/deleteBaihoc.php?id=' + deleteId,
+                            method: 'GET',
+                            success: function () {
+                                alert('Xóa thành công!');
+                                window.location.reload();
+                            },
+                            error: function () {
+                                alert('Có lỗi xảy ra, vui lòng thử lại sau.');
+                            }
+                        });
+                    }
+                });
+            </script>
     <script>
         ( function ( $ ) {
             "use strict";

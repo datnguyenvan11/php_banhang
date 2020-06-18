@@ -1,39 +1,47 @@
-<?php 
-	function getBai($id){
-		include('../config.php');
-		$query = "Select  id,tenBai,giatien,imgBai From baihoc Where id=? ";
-		$stmt=$con->prepare($query);
-		$stmt->bind_param("i",$id);
-		$stmt->execute();
-		$result=$stmt->get_result();
-		return $row = mysqli_fetch_assoc($result);
-	}
+<?php
+ob_start();
+session_start();
+if (isset($_GET["id"])) {
+    $id = $_GET['id'];
+    print_r($id);
 
-	function checkCart($id){
-		$flag=true;
-		for ($i=0; $i <count($_SESSION['cart']) ; $i++) { 
-				if($_SESSION['cart'][$i]['id']==$id)
-					$flag = false;
-		}
-		return $flag;
-	}
-	session_start();
-	$id=$_REQUEST['id'];
-	$res=getBai($id);
-	if(!isset($_SESSION['cart'])){
-		$_SESSION['cart']=array();
-		array_push($_SESSION['cart'],$res);
-		echo "Thêm Thành Công!";
-	}
-	else{
-		if(checkCart($id)==true)
-		{
-			array_push($_SESSION['cart'],$res);
-			echo "Thêm Thành Công!";
-		}
-		else{
-			echo "Đã tồn tại trong giỏ";
-		}
-	}
+    include('../config.php');
+    $query = "Select  * From baihoc Where id= " . $_GET["id"];
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_row($result);
+    if (!isset($_SESSION['cart'])) {
+        $cart[$id] = array(
+            "id" => $row[0],
+            "tenBai" => $row[3],
+            "giatien" => $row[4],
+            "imgBai" => $row[5],
+            "number" => 1,
+        );
+    } else {
+        $cart = $_SESSION['cart'];
+        if (array_key_exists($id, $cart)) {
+            $cart[$id] = array(
+                "id" => $row[0],
+                "tenBai" => $row[3],
+                "giatien" => $row[4],
+                "imgBai" => $row[5],
+                "number" => (int)$cart[$id]['number'] + 1,
+            );
+        } else {
+            $cart[$id] = array(
+                "id" => $row[0],
+                "tenBai" => $row[3],
+                "giatien" => $row[4],
+                "imgBai" => $row[5],
+                "number" => 1,
+            );
+        }
+    }
+    $_SESSION["cart"] = $cart;
+    print_r($_SESSION["cart"]);
 
- ?>
+}
+
+
+
+?>

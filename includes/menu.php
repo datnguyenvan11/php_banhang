@@ -46,7 +46,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						    <ul class="nav navbar-nav navbar-right">
 						      <li><a href="profile.php"  class="hvr-underline-from-center benphai" style="text-transform: uppercase;"> <img src="upload/<?php echo $row['avatar'] ?>" style="width: 40px;height: 40px;border-radius: 50px; " />  <?php echo $row['name']; ?> </a></li>
-						      <li><a href="../includes/deletesesion.php" class="hvr-underline-from-center"><span class="fa fa-sign-out" ></span> Thoát</a></li>
+						      <li><a href="../bankhoahoc/includes/deletesesion.php" class="hvr-underline-from-center"><span class="fa fa-sign-out" ></span> Thoát</a></li>
 						      <li><a href="cart.php" class="hvr-underline-from-center"><span class="fa fa-shopping-cart"></span> Giỏ Hàng</a></li>
 						    </ul>
 					</ul>

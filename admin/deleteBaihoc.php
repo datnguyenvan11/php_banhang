@@ -45,6 +45,6 @@
 				header("location:baihoc.php?maKHoc=$maKHoc");
 			}			
 		}	
-        }
-        }
+    }
+ }
  ?>

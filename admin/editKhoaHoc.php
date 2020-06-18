@@ -44,22 +44,21 @@
 			{
 				echo '<script type="text/javascript">               
 				      setTimeout("Redirect1()", 1000);
-				   </script>';                              
+				   </script>';
 			}
-			else
-			{
-				include('../config.php');
-				$id=$_GET['id'];
-				$query="Select * From khoahoc Where id='$id'";
-				$result=$con->query($query);
-                                $row= mysqli_fetch_assoc($result);  
-                                    $imgKHoc=$row['imgKHoc'];
-                                    $tenKhoa=$row['tenKhoa'];
-                                    $motaKhoc=$row['motaKHoc'];
-                                    $hide=$row['hide'];
-                                    $maKHoc=$row['maKHoc'];
+			else {
+                include('../config.php');
+                $id = $_GET['id'];
+                $query = "Select * From khoahoc Where id='$id'";
+                $result = $con->query($query);
+                $row = mysqli_fetch_assoc($result);
+                $imgKHoc = $row['imgKHoc'];
+                $tenKhoa = $row['tenKhoa'];
+                $motaKhoc = $row['motaKHoc'];
+                $hide = $row['hide'];
+                $maKHoc = $row['maKHoc'];
 
-
+            }
 	?>
 				<div class="well well-lg">
                     <div class="container">
@@ -111,15 +110,15 @@
                                 $stmt->bind_param("ssssii",$maKHoc,$imgKHoc,$tenKhoa,$motaKhoc,$hide,$id);
                                 $stmt->execute();
                                 header("location:khoahoclist.php");
-          
+
                             }
                         ?>
-                    </div> <!-- endcontainer -->						
+                    </div> <!-- endcontainer -->
 				</div> <!-- endwell -->
-                        
-	<?php	
+
+	<?php
 			}
-		}
+
             }
 	?>
 
