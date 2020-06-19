@@ -131,6 +131,7 @@ include('./includes/footer.html');
             success: function (data) {
                 $("#listcart").load("/bankhoahoc/cart.php #listcart")
                 $("#tong").load("/bankhoahoc/cart.php #tong")
+                $("#number").load("/bankhoahoc/cart.php #number")
 
             }
         })
@@ -138,18 +139,21 @@ include('./includes/footer.html');
     }
 
     function deleteCart(id) {
-        $.ajax({
-            url: './includes/deleteCart.php',
-            type: 'GET',
-            dataType: 'text',
-            data: {"id": id},
-            success: function (data) {
-                $("#listcart").load("/bankhoahoc/cart.php #listcart")
-                $("#tong").load("/bankhoahoc/cart.php #tong")
+        if (confirm('Bạn có chắc muốn xóa không?')) {
+            $.ajax({
+                url: './includes/deleteCart.php',
+                type: 'GET',
+                dataType: 'text',
+                data: {"id": id},
+                success: function (data) {
+                    $("#listcart").load("/bankhoahoc/cart.php #listcart")
+                    $("#tong").load("/bankhoahoc/cart.php #tong")
+                    $("#number").load("/bankhoahoc/cart.php #number")
 
-            }
-        })
+                }
+            })
 
+        }
     }
 
 </script>

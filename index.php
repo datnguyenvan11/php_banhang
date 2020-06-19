@@ -20,22 +20,9 @@
         <?php
         include('./includes/menu.php');
         ?>
-
-
     <div class = "top1" >
             <div class="container text-center">
-                <p>Mang Cho Bạn Dịch Vụ Tốt Nhất</p>
-                <div class="formdk" style="margin-top: 200px;">
-                    <form action="" method="POST" role="form" class="form-inline">
-                        <legend>Đăng Ký Thành Viên</legend>
-                        <div class="form-group">
-                            <input type="text" class="form-control input-sm" id="" placeholder="UserName">
-                            <input type="password" class="form-control input-sm" id="" placeholder="Password">
-                            <input type="email" class="form-control input-sm" id="" placeholder="Email">
-                        </div>
-                    <a href="dangky_dangnhap.php" class="btn btn-default">Đăng Ký Ngay</a>
-                    </form><!-- ketthucformdangky -->
-                </div>
+
              </div>
     </div><!-- end top 1 -->
 
@@ -62,8 +49,6 @@
                     while ($row = mysqli_fetch_assoc($result))
                     {
             ?>
-
-
             <?php
                echo     '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center content">
                             <div class="iconto"><div class="'. $row['imgKHoc'] .'"></div></div>
@@ -183,7 +168,6 @@
         <div class="bando text-center">
             <div class="container">
                 <h2>Tìm Chúng Tôi</h2>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.094353812685!2d105.7943137153656!3d20.988854586019986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acc7f3dca9e5%3A0x30cf5a97471f1064!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBIw6AgTuG7mWkgKEhBTlUp!5e0!3m2!1svi!2s!4v1588669114584!5m2!1svi!2s" width="80%" height="450" frameborder="0" style="border:1" allowfullscreen></iframe>
             </div>
         </div> <!-- endbando -->
 
@@ -211,9 +195,6 @@
                   <?php
                       }
                     ?>
-
-
-
                 </div><!-- endorw -->
             </div><!-- endcontainer -->
         </div> <!-- endclasshocvien <-->

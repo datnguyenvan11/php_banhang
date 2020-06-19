@@ -17,6 +17,8 @@ if (isset($_GET["id"])) {
             "imgBai" => $row[5],
             "number" => 1,
         );
+        echo "Thêm vào giỏ hàng thành công";
+
     } else {
         $cart = $_SESSION['cart'];
         if (array_key_exists($id, $cart)) {
@@ -27,6 +29,8 @@ if (isset($_GET["id"])) {
                 "imgBai" => $row[5],
                 "number" => (int)$cart[$id]['number'] + 1,
             );
+            echo "Thêm vào giỏ hàng thành công";
+
         } else {
             $cart[$id] = array(
                 "id" => $row[0],
@@ -35,13 +39,13 @@ if (isset($_GET["id"])) {
                 "imgBai" => $row[5],
                 "number" => 1,
             );
+            echo "Thêm vào giỏ hàng thành công";
+
         }
     }
     $_SESSION["cart"] = $cart;
-    print_r($_SESSION["cart"]);
 
 }
-
 
 
 ?>

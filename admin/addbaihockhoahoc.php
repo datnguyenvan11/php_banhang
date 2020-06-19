@@ -6,7 +6,7 @@ if (!isset($_SESSION['username']))
 {
     ?>
     <script type="text/javascript">
-        setTimeout('Redirect()', 0);
+        window.location.replace("/bankhoahoc/index.php");
     </script>
     <?php
 }
@@ -102,7 +102,8 @@ if ($result) {
                 </li>
                 <h3 class="menu-title">Các Khoá Học</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
-                    <a style="font-family: 'Roboto Condensed', sans-serif;" href="addbaihockhoahoc.php" aria-haspopup="true"
+                    <a style="font-family: 'Roboto Condensed', sans-serif;" href="addbaihockhoahoc.php"
+                       aria-haspopup="true"
                        aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Thêm Khoá Học</a>
                     <a style="font-family: 'Roboto Condensed', sans-serif;" href="khoahoclist.php" aria-haspopup="true"
                        aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Thống Kê Khoá Học</a>
@@ -245,7 +246,7 @@ if ($result) {
 
                         <?php
                     }
-                    }
+
                     ?>
                     <!-- THEM MON HOC -->
                     <!-- CHUC NANG THEM BAI HOC -->
@@ -351,6 +352,7 @@ if ($result) {
         </div> <!-- endcontainer -->
     </div>
     <?php
+    }
     ?>
     <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>

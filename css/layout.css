@@ -68,7 +68,7 @@ nav.navbar.navbar-default.navbar-fixed-top {
 /* css top 1 */
 
 .top1 {
-  width: 100;
+  width: 100%;
   height: 800px;
   background: url(../img/bg.jpg);
   background-size: cover;
@@ -181,7 +181,7 @@ nav.navbar.navbar-default.navbar-fixed-top {
 }
 
 .top4.anhnen {
-  background: url(../img/callout.jpg);
+  /*background: url(../img/khoahoc/callout.jpg);*/
   height: 202px;
   padding: 62px 0;
   background-size: cover;
@@ -340,7 +340,7 @@ nav.navbar.navbar-default.navbar-fixed-top {
   border: solid 0px white;
   background: white;
   color: #13DBC1;
-  font-style: none;
+  font-style: normal;
 }
 
 /* DANGKY */
@@ -906,4 +906,3 @@ hr.vienxanh {
   color: black;
 
 }
-.
