@@ -20,54 +20,51 @@ include '../config.php';
             </div>
 
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <?php
-                if (!isset($_SESSION['username'])) {
-                    ?>
-                    <ul class="nav navbar-nav navbar-right">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="../dangky_dangnhap.php"><span class="glyphicon glyphicon-user"></span> Tài
-                                    Khoản</a></li>
-                        </ul>
-                    </ul>
-                    <?php
-                } else {
-                $username = $_SESSION['username'];
-                $sql = "Select name,avatar From user Where username=?";
-                $stmt = $con->prepare($sql);
-                $stmt->bind_param("s", $username);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                while ($row = mysqli_fetch_assoc($result)) {
-
-                ?>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../profile.php" class="hvr-underline-from-center benphai"
-                           style="text-transform: uppercase;"> <img
-                                    src="../upload/<?php echo $row['avatar'] ?>"
-                                    style="width: 40px;height: 40px;border-radius: 50px; "/> <?php echo $row['name']; ?>
-                        </a></li>
-                    <li><a href="../includes/deletesesion.php" class="hvr-underline-from-center"><span
-                                    class="fa fa-sign-out"></span> Thoát</a></li>
-
-
                     <?php
-                    }
+                    if (!isset($_SESSION['username'])) {
+                        ?>
+                        <li><a href="dangky_dangnhap.php"><span class="glyphicon glyphicon-user"></span> Tài
+                                Khoản</a></li>
+                        <?php
+                    } else {
+                        $username = $_SESSION['username'];
+                        $sql = "Select name,avatar From user Where username=?";
+                        $stmt = $con->prepare($sql);
+                        $stmt->bind_param("s", $username);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                            ?>
+
+                            <li><a href="profile.php" class="hvr-underline-from-center benphai"
+                                   style="text-transform: uppercase;"> <img
+                                            src="upload/<?php echo $row['avatar'] ?>"
+                                            style="width: 40px;height: 40px;border-radius: 50px; "/> <?php echo $row['name']; ?>
+                                </a></li>
+                            <li><a href="../bankhoahoc/includes/deletesesion.php" class="hvr-underline-from-center"><span
+                                            class="fa fa-sign-out"></span> Thoát</a></li>
+
+                            <?php
+                        }
                     }
                     ?>
                     <?php
-                    $number = 0;
-                    if (isset($_SESSION["cart"])) {
-                        $cart = $_SESSION["cart"];
-                        foreach ($cart as $value) {
-                            $number += (int)$value["number"];
+                    $number=0;
+                    if (isset($_SESSION["cart"])){
+                        $cart=$_SESSION["cart"];
+                        foreach ($cart as $value){
+                            $number+=(int)$value["number"];
                         }
 
                     }
                     ?>
-                    <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ Hàng
-                            <span
-                                    class="badge" id="number"> <?php echo $number ?></span></a></li>
+                    <li><a href="/bankhoahoc/cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ Hàng <span
+                                    class="badge" id="number"> <?php echo $number?></span></a></li>
                 </ul>
+
+
 
 
                 <ul class="nav navbar-nav navbar-left ">
